@@ -108,9 +108,12 @@ module overmind::capability_heist {
     public entry fun take_hostage(robber: &signer, answer: String) acquires Robber {
         // TODO: Create a variable holding answer for TAKE_HOSTAGE_QUESTION
 
+
         // TODO: Assert Robber is initialized
+        assert_robber_initialized(robber);
 
         // TODO: Acquire capability from the previous question by the robber
+        
 
         // TODO: Assert the answer is correct
 
@@ -173,7 +176,12 @@ module overmind::capability_heist {
     */
     public(friend) fun check_robber_exists(robber_address: address): bool {
         // TODO: Check if Robber resource exists in robber_address
-        
+        let res = false;
+
+        if (exists<Robber>(robber_address))
+            res = true;
+
+        res        
     }
 
     /*
